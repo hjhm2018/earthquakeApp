@@ -47,7 +47,7 @@ export class Earthquake extends Component {
     render() {
         const magnitudes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        console.log(this.state.earthquakeData.features);
+        if (this.state.show && this.state.earthquakeData) console.log(this.state.earthquakeData.features);
 
         return (
             <div>
@@ -80,7 +80,7 @@ export class Earthquake extends Component {
 
                 <button onClick={() => this.onClick()}>Search</button>
 
-                {this.state.show ? this.earthquakeData ? this.earthquakeData.features.filter(data =>
+                {this.state.show && this.earthquakeData ? this.earthquakeData.features.filter(data =>
                     data.properties.place.includes(this.state.country) &&
                     data.properties.mag <= this.state.maxMagnitude &&
                     data.properties.mag >= this.state.minMagnitude
@@ -91,7 +91,7 @@ export class Earthquake extends Component {
                             <p>{earthquake.properties.name}</p>
                             <p>{earthquake.properties.mag.toFixed(2)}</p>
                         </div>
-                    )) : "Nothing to show" : ""}
+                    )) : "Nothing to show"}
 
             </div>
         )
