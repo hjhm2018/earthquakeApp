@@ -22,7 +22,7 @@ export class Earthquake extends Component {
     };
 
     onClick() {
-        fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson`).then(response => {
+        fetch(`https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=${this.state.startDate}&endtime=${this.state.endDate}&minmagnitude=${this.state.minMagnitude}&maxmagnitude=${this.state.maxMagnitude}`).then(response => {
             response
                 .json()
                 .then(data => {
@@ -47,7 +47,9 @@ export class Earthquake extends Component {
     render() {
         const magnitudes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        if (this.state.show && this.state.earthquakeData) console.log(this.state.earthquakeData.features);
+        if (this.state.show && this.state.earthquakeData) {
+            console.log(this.state.earthquakeData.features);
+        }
 
         return (
             <div>
@@ -80,18 +82,17 @@ export class Earthquake extends Component {
 
                 <button onClick={() => this.onClick()}>Search</button>
 
-                {this.state.show && this.earthquakeData ? this.earthquakeData.features.filter(data =>
-                    data.properties.place.includes(this.state.country) &&
-                    data.properties.mag <= this.state.maxMagnitude &&
-                    data.properties.mag >= this.state.minMagnitude
-                    && data.properties.time.toLocaleString() >= this.state.startDate &&
-                    data.properties.time.toLocaleString() >= this.state.endDate)
+                {this.state.show && this.state.earthquakeData.features ? this.state.earthquakeData.features.filter(data =>
+                    data.properties.place.includes(this.state.country))
                     .map((earthquake, index) => (
                         <div key={index}>
-                            <p>{earthquake.properties.name}</p>
-                            <p>{earthquake.properties.mag.toFixed(2)}</p>
+                            <p>{earthquake.properties.place}</p>
+                            <p>{earthquake.properties.mag && earthquake.properties.mag.toFixed(2)}</p>
+                            <p>{new Date(earthquake.properties.time).toLocaleDateString()}</p>
+                            {/* <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() >= this.state.startDate)}</p>
+                            <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() < this.state.endDate)}</p> */}
                         </div>
-                    )) : "Nothing to show"}
+                    )) : <p>Enter some data</p>}
 
             </div>
         )
