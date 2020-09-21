@@ -52,47 +52,87 @@ export class Earthquake extends Component {
         }
 
         return (
-            <div>
-                <input name="startDate" onChange={this.onChange} type="date" />
-                <br />
-                <input name="endDate" onChange={this.onChange} type="date" />
-                <br />
-                <select onChange={this.onChange} name="minMagnitude">
-                    <option>Min. Magnitude</option>
-                    {magnitudes.map((magnitude, index) => {
-                        return <option key={index} value={magnitude}>{magnitude}</option>
-                    })}
-                </select>
-                <br />
-                <select onChange={this.onChange} name="maxMagnitude">
-                    <option>Max. Magnitude</option>
-                    {magnitudes.map((magnitude, index) => {
-                        return <option key={index} value={magnitude}>{magnitude}</option>
-                    })}
-                </select>
-                <br />
-                <select onChange={this.onChange} name="country">
-                    <option>Select a country</option>
-                    {this.state.countries.map((country, index) => {
-                        return <option key={index} value={country}>{country}</option>
-                    })}
-                </select>
+            <div className="container-fluid text-center">
+                <h1><span role="img" aria-label="Planet Earth emoji">&#127758;</span> Earthquake Counter <span role="img" aria-label="Notebook emoji">&#128221;</span></h1>
+                <label htmlFor="startDate">From:
+                    <input name="startDate" onChange={this.onChange} type="date" />
+                </label>
+
+                <label htmlFor="endDate">To:
+                    <input name="endDate" onChange={this.onChange} type="date" />
+                </label>
+
+                <label htmlFor="minMagnitude"> Min. Magnitude
+                    <select onChange={this.onChange} name="minMagnitude">
+                        <option>Min. Magnitude</option>
+                        {magnitudes.map((magnitude, index) => {
+                            return <option key={index} value={magnitude}>{magnitude}</option>
+                        })}
+                    </select>
+                </label>
+                <label htmlFor="maxMagnitude">Max. Magnitude
+                    <select onChange={this.onChange} name="maxMagnitude">
+                        <option>Max. Magnitude</option>
+                        {magnitudes.map((magnitude, index) => {
+                            return <option key={index} value={magnitude}>{magnitude}</option>
+                        })}
+                    </select>
+                </label>
+
+                <label htmlFor="country">Country:
+                    <select onChange={this.onChange} name="country">
+                        <option>Select a country</option>
+                        {this.state.countries.map((country, index) => {
+                            return <option key={index} value={country}>{country}</option>
+                        })}
+                    </select>
+                </label>
 
                 <br />
 
-                <button onClick={() => this.onClick()}>Search</button>
+                <button className="btn btn-primary" onClick={() => this.onClick()}>Search</button>
 
-                {this.state.show && this.state.earthquakeData.features ? this.state.earthquakeData.features.filter(data =>
-                    data.properties.place.includes(this.state.country))
+                <table className="table table-bordered table-dark text-center col-sm-8 rounded mx-auto mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Magnitude</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.show && this.state.earthquakeData.features ? this.state.earthquakeData.features.filter(data =>
+                            data.properties.place.includes(this.state.country)
+                        )
+                            .map((earthquake, index) => (
+                                <tr key={index}>
+                                    <td>{index}</td>
+                                    <td>{earthquake.properties.place}</td>
+                                    <td>{earthquake.properties.mag && earthquake.properties.mag.toFixed(2)}</td>
+                                    <td>{new Date(earthquake.properties.time).toLocaleDateString()}</td>
+                                </tr>
+                            )) : <tr><td colSpan="8">No data</td></tr>}
+                    </tbody>
+                </table>
+
+                {/* {this.state.show && this.state.earthquakeData.features ? this.state.earthquakeData.features.filter(data =>
+                    data.properties.place.includes(this.state.country)
+                    && data.properties.mag <= this.state.maxMagnitude &&
+                    data.properties.mag >= this.state.minMagnitude &&
+                    new Date(data.properties.time).toLocaleDateString() >= this.state.startDate &&
+                    new Date(data.properties.time).toLocaleDateString() <= this.state.endDate
+                )
                     .map((earthquake, index) => (
                         <div key={index}>
+                            <p>{index + 1}</p>
                             <p>{earthquake.properties.place}</p>
                             <p>{earthquake.properties.mag && earthquake.properties.mag.toFixed(2)}</p>
                             <p>{new Date(earthquake.properties.time).toLocaleDateString()}</p>
-                            {/* <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() >= this.state.startDate)}</p>
-                            <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() < this.state.endDate)}</p> */}
+                            <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() >= this.state.startDate)}</p>
+                            <p>{console.log(new Date(earthquake.properties.time).toLocaleDateString() < this.state.endDate)}</p>
                         </div>
-                    )) : <p>Enter some data</p>}
+                    )) : <p>Enter some data</p>} */}
 
             </div>
         )
