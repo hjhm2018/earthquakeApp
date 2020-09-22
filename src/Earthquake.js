@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 
 export class Earthquake extends Component {
 
@@ -8,7 +7,7 @@ export class Earthquake extends Component {
         endDate: "",
         minMagnitude: "",
         maxMagnitude: "",
-        countries: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"],
+        countries: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"],
         country: "",
         earthquakeData: [],
         show: false
@@ -47,22 +46,22 @@ export class Earthquake extends Component {
     render() {
         const magnitudes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-        if (this.state.show && this.state.earthquakeData) {
-            console.log(this.state.earthquakeData.features);
-        }
+        // if (this.state.show && this.state.earthquakeData) {
+        //     console.log(this.state.earthquakeData.features);
+        // }
 
         return (
-            <div className="container-fluid text-center">
-                <h1><span role="img" aria-label="Planet Earth emoji">&#127758;</span> Earthquake Counter <span role="img" aria-label="Notebook emoji">&#128221;</span></h1>
-                <label htmlFor="startDate">From:
-                    <input name="startDate" onChange={this.onChange} type="date" />
+            <div className="container-fluid text-center pt-md-4 pt-sm-1">
+                <h1 className="p-4 font-weight-bolder"><span role="img" aria-label="Planet Earth emoji">&#127758;</span> Earthquake Counter <span role="img" aria-label="Notebook emoji">&#128221;</span></h1>
+                <label className="p-2" htmlFor="startDate">From: &nbsp;
+                    <input className="text-center" name="startDate" onChange={this.onChange} type="date" />
                 </label>
 
-                <label htmlFor="endDate">To:
-                    <input name="endDate" onChange={this.onChange} type="date" />
+                <label className="p-2" htmlFor="endDate">To: &nbsp;
+                    <input className="text-center" name="endDate" onChange={this.onChange} type="date" />
                 </label>
 
-                <label htmlFor="minMagnitude"> Min. Magnitude
+                <label className="p-2" htmlFor="minMagnitude"> Min. Magnitude: &nbsp;
                     <select onChange={this.onChange} name="minMagnitude">
                         <option>Min. Magnitude</option>
                         {magnitudes.map((magnitude, index) => {
@@ -70,7 +69,7 @@ export class Earthquake extends Component {
                         })}
                     </select>
                 </label>
-                <label htmlFor="maxMagnitude">Max. Magnitude
+                <label className="p-2" htmlFor="maxMagnitude">Max. Magnitude: &nbsp;
                     <select onChange={this.onChange} name="maxMagnitude">
                         <option>Max. Magnitude</option>
                         {magnitudes.map((magnitude, index) => {
@@ -79,7 +78,7 @@ export class Earthquake extends Component {
                     </select>
                 </label>
 
-                <label htmlFor="country">Country:
+                <label className="p-2" htmlFor="country">Country: &nbsp;
                     <select onChange={this.onChange} name="country">
                         <option>Select a country</option>
                         {this.state.countries.map((country, index) => {
@@ -90,9 +89,9 @@ export class Earthquake extends Component {
 
                 <br />
 
-                <button className="btn btn-primary" onClick={() => this.onClick()}>Search</button>
+                <button className="btn btn-primary p-2" onClick={() => this.onClick()}>Search</button>
 
-                <table className="table table-bordered table-dark text-center col-sm-8 rounded mx-auto mt-4">
+                <table className="table table-bordered table-dark text-center col-sm-8 rounded mx-auto mt-4 mb-5 pb-5">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
